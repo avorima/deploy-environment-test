@@ -1,0 +1,16 @@
+name: Test
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      REPO_SECRET: ${{ secrets.REPO_SECRET }}
+    steps:
+      - name: Show secrets
+        run: |
+          echo "repo-secret=$REPO_SECRET"

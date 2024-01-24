@@ -1,0 +1,20 @@
+name: Deploy
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test:
+    environment: test
+    runs-on: ubuntu-latest
+    env:
+      REPO_SECRET: ${{ secrets.REPO_SECRET }}
+      ENV_SECRET: ${{ secrets.ENV_SECRET }}
+    steps:
+      - name: Show secrets
+        run: |
+          echo "repo-secret=$REPO_SECRET"
+          echo "env-secret=$ENV_SECRET"
